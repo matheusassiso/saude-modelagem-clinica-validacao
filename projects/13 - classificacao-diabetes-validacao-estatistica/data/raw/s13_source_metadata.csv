@@ -1,0 +1,2 @@
+file,canonical_source,local_build_source,access_note,retrieved_at
+diabetes.csv,https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database,https://raw.githubusercontent.com/npradaschnor/Pima-Indians-Diabetes-Dataset/master/diabetes.csv,Kaggle is the canonical source; a public CSV mirror is used when Kaggle CLI is unavailable.,2026-06-26 23:44:42.260097

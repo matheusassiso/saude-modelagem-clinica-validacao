@@ -1,0 +1,5 @@
+target_label,predicted_label,records
+No heart disease,No heart disease,20
+No heart disease,Heart disease,8
+Heart disease,No heart disease,4
+Heart disease,Heart disease,29

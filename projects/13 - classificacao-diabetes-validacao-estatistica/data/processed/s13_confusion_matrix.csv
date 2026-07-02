@@ -1,0 +1,5 @@
+outcome_label,predicted_label,records
+No diabetes,No diabetes,94
+No diabetes,Diabetes,6
+Diabetes,No diabetes,19
+Diabetes,Diabetes,35

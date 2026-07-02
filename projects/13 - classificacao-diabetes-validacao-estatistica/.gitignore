@@ -1,0 +1,14 @@
+.Rhistory
+.RData
+.Rproj.user/
+.quarto/
+renv/library/
+renv/staging/
+*.knit.md
+*_files/
+*_cache/
+*.aux
+*.log
+*.out
+*.toc
+*.tex

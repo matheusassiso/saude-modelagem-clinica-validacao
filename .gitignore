@@ -1,0 +1,11 @@
+# Raw public data caches kept out of Git
+**/data/raw/datasusr-cache/
+**/data/raw/*.dbc
+**/data/raw/*.zip
+
+# Local/editor noise
+.DS_Store
+Thumbs.db
+.Rhistory
+.RData
+.Rproj.user/

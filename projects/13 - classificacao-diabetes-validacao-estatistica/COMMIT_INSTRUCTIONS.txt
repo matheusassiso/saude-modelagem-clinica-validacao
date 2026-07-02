@@ -1,0 +1,46 @@
+Instruções de commit e publicação
+===================================
+
+Projeto: Classificação de diabetes com validação estatística
+Pasta: 13 - kaggle-diabetes-classification
+Nome sugerido para repositório individual: 13-kaggle-diabetes-classification
+
+Política de autoria:
+- Usar somente Matheus Assis de Oliveira / matheusassiso como autor do commit.
+- Não adicionar colaboradores.
+- Não incluir trailers `Co-authored-by`.
+- Não adicionar crédito de assistente, gerador externo ou colaborador adicional.
+
+Escopo:
+- Esta pasta pode virar um repositório GitHub independente.
+- Para o super-repositório, mantenha a pasta completa dentro do tema correspondente.
+- Não remova dados, PDFs, HTMLs, dashboards ou instruções de publicação.
+
+Comandos locais de renderização a partir da raiz deste projeto:
+
+  Rscript -e "rmarkdown::render('reports/s13_diabetes_classification_article.Rmd', output_format = 'pdf_document', output_file = '13-kaggle-diabetes-classification.pdf', output_dir = 'reports')"
+  Rscript -e "rmarkdown::render('reports/s13_diabetes_classification_article.Rmd', output_format = 'html_document', output_file = '13-kaggle-diabetes-classification.html', output_dir = 'reports')"
+
+Arquivos esperados:
+- README.md em português
+- README_EN.md quando houver referência original
+- COMMIT_INSTRUCTIONS.txt
+- data/raw/ e data/processed/
+- src/R/ e/ou scripts/
+- reports/*.Rmd
+- reports/*.pdf
+- reports/*.html
+- reports/figures/
+- docs/index.html
+
+Comandos de publicação para repositório individual:
+
+  git init
+  git status
+  git config user.name "Matheus Assis de Oliveira"
+  git config user.email "matheusassiso687@gmail.com"
+  git add .
+  git commit -m "docs: publica 13-kaggle-diabetes-classification em portugues"
+  git branch -M main
+  git remote add origin https://github.com/matheusassiso/13-kaggle-diabetes-classification.git
+  git push origin main

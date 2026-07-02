@@ -1,0 +1,5 @@
+split_set,target_label,records
+test,No heart disease,28
+test,Heart disease,33
+train,No heart disease,110
+train,Heart disease,132

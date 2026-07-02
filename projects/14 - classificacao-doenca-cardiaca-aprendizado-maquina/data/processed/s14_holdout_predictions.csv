@@ -1,0 +1,62 @@
+age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal,target,target_label,model,predicted_probability,predicted_outcome,predicted_label
+63,1,3,145,233,1,0,150,0,2.3,0,0,1,1,Heart disease,logistic,0.8384426877117279,1,Heart disease
+57,0,0,120,354,0,1,163,1,0.6,2,0,2,1,Heart disease,logistic,0.8041011557055927,1,Heart disease
+57,1,0,140,192,0,1,148,0,0.4,1,0,1,1,Heart disease,logistic,0.7073268347421001,1,Heart disease
+54,1,0,140,239,0,1,160,0,1.2,2,0,2,1,Heart disease,logistic,0.5063356934376545,1,Heart disease
+49,1,1,130,266,0,1,171,0,0.6,2,0,2,1,Heart disease,logistic,0.8469907953282942,1,Heart disease
+64,1,3,110,211,0,0,144,1,1.8,1,0,2,1,Heart disease,logistic,0.8850970074251984,1,Heart disease
+58,0,3,150,283,1,0,162,0,1,2,0,2,1,Heart disease,logistic,0.9891341929751097,1,Heart disease
+43,1,0,150,247,0,1,171,0,1.5,2,0,2,1,Heart disease,logistic,0.47283431802279363,0,No heart disease
+69,0,3,140,239,0,1,151,0,1.8,2,2,2,1,Heart disease,logistic,0.9407930280973273,1,Heart disease
+59,1,2,150,212,1,1,157,0,1.6,2,0,2,1,Heart disease,logistic,0.8251954108668509,1,Heart disease
+54,0,2,135,304,1,1,170,0,0,2,0,2,1,Heart disease,logistic,0.9899537772705362,1,Heart disease
+47,1,2,138,257,0,0,156,0,0,2,0,2,1,Heart disease,logistic,0.911451550682342,1,Heart disease
+57,0,0,128,303,0,0,159,0,0,2,1,2,1,Heart disease,logistic,0.8252283613261385,1,Heart disease
+52,1,3,118,186,0,0,190,0,0,1,0,1,1,Heart disease,logistic,0.9976540197137005,1,Heart disease
+45,1,1,128,308,0,0,170,0,0,2,0,2,1,Heart disease,logistic,0.8245018318937927,1,Heart disease
+68,1,2,118,277,0,1,151,0,1,2,1,3,1,Heart disease,logistic,0.5502722819021386,1,Heart disease
+58,0,0,100,248,0,0,122,0,1,1,0,2,1,Heart disease,logistic,0.8472005290790237,1,Heart disease
+62,0,0,140,394,0,0,157,0,1.2,1,0,2,1,Heart disease,logistic,0.5002187559679754,1,Heart disease
+52,1,0,108,233,1,1,147,0,0.1,2,3,3,1,Heart disease,logistic,0.06333376783736096,0,No heart disease
+53,1,2,130,246,1,0,173,0,0,2,3,2,1,Heart disease,logistic,0.5448637865622205,1,Heart disease
+59,1,3,178,270,0,0,145,0,4.2,0,0,3,1,Heart disease,logistic,0.08140219555655395,0,No heart disease
+50,0,0,110,254,0,0,159,0,0,2,0,2,1,Heart disease,logistic,0.9728196204652031,1,Heart disease
+57,1,2,150,126,1,1,173,0,0.2,2,1,3,1,Heart disease,logistic,0.8613389358794074,1,Heart disease
+43,1,0,110,211,0,1,161,0,0,2,0,3,1,Heart disease,logistic,0.733209568624582,1,Heart disease
+41,0,1,126,306,0,1,163,0,0,2,0,2,1,Heart disease,logistic,0.9784078288804562,1,Heart disease
+43,1,0,115,303,0,1,181,0,1.2,1,0,2,1,Heart disease,logistic,0.5715612758040945,1,Heart disease
+42,0,2,120,209,0,1,173,0,0,1,0,2,1,Heart disease,logistic,0.9969237296702876,1,Heart disease
+70,1,1,156,245,0,0,143,0,0,2,0,2,1,Heart disease,logistic,0.6017577594903116,1,Heart disease
+44,1,2,120,226,0,1,169,0,0,2,0,2,1,Heart disease,logistic,0.9754611954352311,1,Heart disease
+47,1,2,130,253,0,1,179,0,0,2,0,2,1,Heart disease,logistic,0.9679581020588575,1,Heart disease
+58,1,1,125,220,0,1,144,0,0.4,1,4,3,1,Heart disease,logistic,0.024758529503570763,0,No heart disease
+41,1,1,120,157,0,1,182,0,0,2,0,2,1,Heart disease,logistic,0.9784928289076454,1,Heart disease
+38,1,2,138,175,0,1,173,0,0,2,4,2,1,Heart disease,logistic,0.5019067656114535,1,Heart disease
+67,1,0,120,229,0,0,129,1,2.6,1,2,3,0,No heart disease,logistic,0.005972222844866351,0,No heart disease
+53,1,0,140,203,1,0,155,1,3.1,0,0,3,0,No heart disease,logistic,0.027783043575232667,0,No heart disease
+48,1,1,110,229,0,1,168,0,1,0,0,3,0,No heart disease,logistic,0.6163186663759518,1,Heart disease
+60,1,0,130,206,0,0,132,1,2.4,1,2,3,0,No heart disease,logistic,0.0070731792697009375,0,No heart disease
+41,1,0,110,172,0,0,158,0,0,2,0,3,0,No heart disease,logistic,0.7773544398971891,1,Heart disease
+54,1,0,120,188,0,1,113,0,1.4,1,1,3,0,No heart disease,logistic,0.05817539915835155,0,No heart disease
+60,1,2,140,185,0,0,155,0,3,1,0,2,0,No heart disease,logistic,0.7086117622530329,1,Heart disease
+44,1,0,110,197,0,0,177,0,0,2,1,2,0,No heart disease,logistic,0.8166310786649171,1,Heart disease
+62,0,0,160,164,0,0,145,0,6.2,0,3,3,0,No heart disease,logistic,0.004586388242478122,0,No heart disease
+60,0,0,150,258,0,0,157,0,2.6,1,2,3,0,No heart disease,logistic,0.08506961558719017,0,No heart disease
+59,1,0,140,177,0,1,162,1,0,2,1,3,0,No heart disease,logistic,0.22691895496391043,0,No heart disease
+43,0,0,132,341,1,0,136,1,3,1,0,3,0,No heart disease,logistic,0.0819749483833793,0,No heart disease
+62,0,2,130,263,0,1,97,0,1.2,1,1,3,0,No heart disease,logistic,0.5040106892204996,1,Heart disease
+65,1,3,138,282,1,0,174,0,1.4,1,1,2,0,No heart disease,logistic,0.7740806171815249,1,Heart disease
+64,1,0,145,212,0,0,132,0,2,1,2,1,0,No heart disease,logistic,0.057030389344239533,0,No heart disease
+57,1,0,152,274,0,1,88,1,1.2,1,1,3,0,No heart disease,logistic,0.002428184090793286,0,No heart disease
+43,1,0,132,247,1,0,143,1,0.1,1,4,3,0,No heart disease,logistic,0.0027551327233615586,0,No heart disease
+62,0,0,138,294,1,1,106,0,1.9,1,3,2,0,No heart disease,logistic,0.022220591243993837,0,No heart disease
+38,1,3,120,231,0,1,182,1,3.8,1,0,3,0,No heart disease,logistic,0.739006061315626,1,Heart disease
+66,0,0,178,228,1,1,165,1,1,1,2,3,0,No heart disease,logistic,0.06769905768972505,0,No heart disease
+49,1,2,118,149,0,0,126,0,0.8,2,3,2,0,No heart disease,logistic,0.4541157325177028,0,No heart disease
+54,1,0,122,286,0,0,116,1,3.2,1,2,2,0,No heart disease,logistic,0.003922647337025889,0,No heart disease
+61,1,0,140,207,0,0,138,1,1.9,2,1,3,0,No heart disease,logistic,0.03433487849295245,0,No heart disease
+58,1,0,114,318,0,2,140,0,4.4,0,3,1,0,No heart disease,logistic,0.005264540225440999,0,No heart disease
+44,1,0,120,169,0,1,144,1,2.8,0,0,1,0,No heart disease,logistic,0.3109885031377994,0,No heart disease
+63,1,0,140,187,0,0,144,1,4,2,2,3,0,No heart disease,logistic,0.0069016104702618606,0,No heart disease
+59,1,0,164,176,1,0,90,0,1,1,2,1,0,No heart disease,logistic,0.019501162940481154,0,No heart disease
+57,0,1,130,236,0,0,174,0,0,1,1,2,0,No heart disease,logistic,0.9583029474874725,1,Heart disease

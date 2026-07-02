@@ -1,0 +1,213 @@
+---
+title: "Kaggle Diabetes Classification"
+subtitle: "Validation and interpretation with logistic regression and decision tree baselines"
+author: "Matheus Assis de Oliveira"
+date: "June 26, 2026"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+geometry: margin=0.82in
+fontsize: 10pt
+urlcolor: blue
+linkcolor: black
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.width = 7.2, fig.height = 4.6, fig.align = "center")
+
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(readr)
+library(scales)
+library(tibble)
+
+if (!file.exists("../data/processed/s13_model_metrics.csv")) {
+  source("../src/R/diabetes_classification.R")
+  prepare_s13_outputs(force = FALSE)
+}
+
+clean_data <- read_csv("../data/processed/s13_clean_diabetes.csv", show_col_types = FALSE)
+metrics <- read_csv("../data/processed/s13_model_metrics.csv", show_col_types = FALSE)
+confusion <- read_csv("../data/processed/s13_confusion_matrix.csv", show_col_types = FALSE)
+cv_metrics <- read_csv("../data/processed/s13_cv_metrics.csv", show_col_types = FALSE)
+predictions <- read_csv("../data/processed/s13_holdout_predictions.csv", show_col_types = FALSE)
+roc_points <- read_csv("../data/processed/s13_roc_curve.csv", show_col_types = FALSE)
+calibration <- read_csv("../data/processed/s13_calibration_bins.csv", show_col_types = FALSE)
+importance <- read_csv("../data/processed/s13_variable_importance.csv", show_col_types = FALSE)
+
+theme_set(theme_minimal(base_size = 10))
+fmt_int <- label_comma(big.mark = ",", decimal.mark = ".")
+fmt_num <- label_number(big.mark = ",", decimal.mark = ".", accuracy = 0.001)
+fmt_pct <- label_percent(accuracy = 0.1)
+
+selected <- metrics |> slice_head(n = 1)
+records <- nrow(clean_data)
+positive_rate <- mean(clean_data$Outcome == 1)
+```
+
+\newpage
+
+# Abstract
+
+This article presents a careful binary classification workflow for the Kaggle Pima Indians Diabetes Database. The dataset contains `r fmt_int(records)` records and a diabetes outcome prevalence of `r fmt_pct(positive_rate)`. The workflow treats implausible zero values as missing for selected clinical fields, imputes medians from the training set, compares logistic regression and decision tree models, and evaluates performance with a stratified holdout set and 5-fold cross-validation. The selected model is `r selected$model`, with holdout ROC-AUC of `r fmt_num(selected$roc_auc)`, sensitivity of `r fmt_pct(selected$sensitivity)`, specificity of `r fmt_pct(selected$specificity)`, and F1 of `r fmt_pct(selected$f1)`. This is a portfolio classification exercise, not a clinical diagnostic tool.
+
+# Introduction
+
+Diabetes classification is a common ML exercise, but health data require careful wording. A model can be technically interesting without being clinically valid. This project therefore emphasizes validation, interpretability, and limitations.
+
+The research question is:
+
+```text
+Which variables help classify diabetes outcome, and how can the
+model be validated without overstating clinical meaning?
+```
+
+# Data
+
+```{r data-table}
+tibble(
+  Item = c("Canonical source", "Records", "Predictors", "Outcome prevalence", "Zero-as-missing fields"),
+  Value = c(
+    "Kaggle Pima Indians Diabetes Database",
+    fmt_int(records),
+    "8",
+    fmt_pct(positive_rate),
+    "Glucose, BloodPressure, SkinThickness, Insulin, BMI"
+  )
+) |>
+  knitr::kable(caption = "Dataset summary.")
+```
+
+```{r outcome-plot, fig.cap="Outcome distribution."}
+clean_data |>
+  count(outcome_label) |>
+  ggplot(aes(x = outcome_label, y = n, fill = outcome_label)) +
+  geom_col(width = 0.65, show.legend = FALSE) +
+  scale_fill_manual(values = c("No diabetes" = "#3A7CA5", "Diabetes" = "#D95F02")) +
+  labs(x = NULL, y = "Records")
+```
+
+# Methods
+
+Zeros are converted to missing for clinical fields where zero is biologically implausible. Median imputation is learned only on the training set. Logistic regression uses standardized predictors, making coefficient magnitudes comparable. A decision tree is included as an interpretable nonlinear baseline.
+
+The main validation split is stratified 80/20. Cross-validation uses five stratified folds on the training data.
+
+# Results
+
+## Holdout Metrics
+
+```{r metrics-table}
+metrics |>
+  transmute(
+    Model = model,
+    Accuracy = fmt_pct(accuracy),
+    Sensitivity = fmt_pct(sensitivity),
+    Specificity = fmt_pct(specificity),
+    Precision = fmt_pct(precision),
+    F1 = fmt_pct(f1),
+    `ROC-AUC` = fmt_num(roc_auc)
+  ) |>
+  knitr::kable(caption = "Holdout model metrics at threshold 0.50.")
+```
+
+## Confusion Matrix
+
+```{r confusion-table}
+confusion |>
+  rename(Observed = outcome_label, Predicted = predicted_label, Records = records) |>
+  knitr::kable(caption = "Selected-model holdout confusion matrix.")
+```
+
+## ROC Curve
+
+```{r roc-plot, fig.cap="Selected-model ROC curve."}
+roc_points |>
+  ggplot(aes(x = fpr, y = sensitivity)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "grey60") +
+  geom_line(color = "#08519C", linewidth = 0.8) +
+  coord_equal() +
+  labs(x = "False positive rate", y = "Sensitivity")
+```
+
+## Cross-Validation
+
+```{r cv-table}
+cv_metrics |>
+  group_by(model) |>
+  summarise(
+    accuracy = mean(accuracy, na.rm = TRUE),
+    sensitivity = mean(sensitivity, na.rm = TRUE),
+    specificity = mean(specificity, na.rm = TRUE),
+    f1 = mean(f1, na.rm = TRUE),
+    roc_auc = mean(roc_auc, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  transmute(
+    Model = model,
+    Accuracy = fmt_pct(accuracy),
+    Sensitivity = fmt_pct(sensitivity),
+    Specificity = fmt_pct(specificity),
+    F1 = fmt_pct(f1),
+    `Mean ROC-AUC` = fmt_num(roc_auc)
+  ) |>
+  knitr::kable(caption = "Five-fold cross-validation summary.")
+```
+
+## Variable Interpretation
+
+```{r importance-plot, fig.cap="Logistic regression variable importance."}
+importance |>
+  ggplot(aes(x = reorder(variable, importance), y = importance)) +
+  geom_col(fill = "#4C956C", width = 0.70) +
+  coord_flip() +
+  labs(x = NULL, y = "Absolute standardized coefficient")
+```
+
+```{r importance-table}
+importance |>
+  transmute(
+    Variable = variable,
+    Coefficient = fmt_num(coefficient),
+    Direction = direction
+  ) |>
+  knitr::kable(caption = "Standardized logistic regression coefficients.")
+```
+
+## Calibration
+
+```{r calibration-plot, fig.cap="Calibration bins for the selected model."}
+calibration |>
+  ggplot(aes(x = mean_probability, y = observed_rate)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "grey60") +
+  geom_point(size = 2.4, color = "#D95F02") +
+  geom_line(color = "#D95F02") +
+  coord_equal(xlim = c(0, 1), ylim = c(0, 1)) +
+  labs(x = "Mean predicted probability", y = "Observed diabetes rate")
+```
+
+# Discussion
+
+The selected model provides a useful benchmark for classification and interpretation. Logistic regression is especially appropriate for a portfolio health example because it is transparent: the analyst can inspect direction and relative magnitude of standardized coefficients.
+
+The confusion matrix is as important as ROC-AUC. Depending on whether the intended use is screening, triage, or general risk scoring, the threshold would need to be chosen differently. This project keeps the threshold at 0.50 and reports sensitivity and specificity clearly.
+
+# Limitations
+
+This dataset is small, historical, and population-specific. It is not representative of Brazil or of general clinical practice. The model does not include symptoms, medication history, laboratory follow-up, social determinants, or clinician review. The output must not be interpreted as diagnosis or medical advice.
+
+# Conclusion
+
+S13 delivers a complete, reproducible diabetes classification workflow with careful preprocessing, stratified validation, model comparison, ROC-AUC, calibration, and interpretation. The strongest portfolio signal is not only the model score, but the responsible framing of what the model can and cannot mean.
+
+# References
+
+Kaggle Pima Indians Diabetes Database. <https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database>
+
+Public CSV mirror used for local reproducibility. <https://raw.githubusercontent.com/npradaschnor/Pima-Indians-Diabetes-Dataset/master/diabetes.csv>
+
+Smith, J. W., et al. (1988). Using the ADAP learning algorithm to forecast the onset of diabetes mellitus.
+

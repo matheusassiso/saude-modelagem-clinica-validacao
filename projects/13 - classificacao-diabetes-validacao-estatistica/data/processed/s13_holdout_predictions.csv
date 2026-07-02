@@ -1,0 +1,155 @@
+Pregnancies,Glucose,BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age,Outcome,outcome_label,model,predicted_probability,predicted_outcome,predicted_label
+1,115,70,30,96,34.6,0.529,32,1,Diabetes,logistic,0.25258971250194934,0,No diabetes
+8,99,84,NA,NA,35.4,0.388,50,0,No diabetes,logistic,0.28296205739520497,0,No diabetes
+3,158,76,36,245,31.6,0.851,28,1,Diabetes,logistic,0.5984277952476538,1,Diabetes
+3,88,58,11,54,24.8,0.267,22,0,No diabetes,logistic,0.050770193559510665,0,No diabetes
+9,102,76,37,NA,32.9,0.665,46,1,Diabetes,logistic,0.3471945229625708,0,No diabetes
+9,171,110,24,240,45.4,0.721,54,1,Diabetes,logistic,0.9204408314318149,1,Diabetes
+1,146,56,NA,NA,29.7,0.564,29,0,No diabetes,logistic,0.4326727326277654,0,No diabetes
+1,101,50,15,36,24.2,0.526,26,0,No diabetes,logistic,0.09004861174763958,0,No diabetes
+1,73,50,10,NA,23,0.248,21,0,No diabetes,logistic,0.02167277719324503,0,No diabetes
+0,146,82,NA,NA,40.5,1.781,44,0,No diabetes,logistic,0.8119695470369027,1,Diabetes
+0,105,64,41,142,41.5,0.173,22,0,No diabetes,logistic,0.21345423931656463,0,No diabetes
+5,99,74,27,NA,29,0.203,32,0,No diabetes,logistic,0.11007203497234487,0,No diabetes
+5,95,72,33,NA,37.7,0.37,27,0,No diabetes,logistic,0.2045978111781817,0,No diabetes
+2,110,74,29,125,32.4,0.698,27,0,No diabetes,logistic,0.20363523827740868,0,No diabetes
+1,80,55,NA,NA,19.1,0.258,21,0,No diabetes,logistic,0.020211770998355204,0,No diabetes
+1,71,48,18,76,20.4,0.323,22,0,No diabetes,logistic,0.019297027370778982,0,No diabetes
+1,122,90,51,220,49.7,0.325,31,1,Diabetes,logistic,0.4987162779380042,0,No diabetes
+1,96,122,NA,NA,22.4,0.207,27,0,No diabetes,logistic,0.02043232039238409,0,No diabetes
+3,83,58,31,18,34.3,0.336,25,0,No diabetes,logistic,0.11233896772663896,0,No diabetes
+4,76,62,NA,NA,34,0.391,25,0,No diabetes,logistic,0.08761402791587834,0,No diabetes
+4,146,92,NA,NA,31.2,0.539,61,1,Diabetes,logistic,0.5339059089936494,1,Diabetes
+6,111,64,39,NA,34.2,0.26,24,0,No diabetes,logistic,0.2685258645426917,0,No diabetes
+2,107,74,30,100,33.6,0.404,23,0,No diabetes,logistic,0.161892199795258,0,No diabetes
+3,120,70,30,135,42.9,0.452,30,0,No diabetes,logistic,0.47214549290459223,0,No diabetes
+1,117,88,24,145,34.5,0.403,40,1,Diabetes,logistic,0.21123198079106398,0,No diabetes
+2,96,68,13,49,21.1,0.647,26,0,No diabetes,logistic,0.056676607816163314,0,No diabetes
+0,100,70,26,50,30.8,0.597,21,0,No diabetes,logistic,0.10679319159834266,0,No diabetes
+5,105,72,29,325,36.9,0.159,28,0,No diabetes,logistic,0.1924967859822832,0,No diabetes
+2,108,52,26,63,32.5,0.318,22,0,No diabetes,logistic,0.1849380974516501,0,No diabetes
+2,88,74,19,53,29,0.229,22,0,No diabetes,logistic,0.053317601869467796,0,No diabetes
+17,163,72,41,114,40.9,0.817,47,1,Diabetes,logistic,0.9627996403432214,1,Diabetes
+0,114,80,34,285,44.2,0.167,27,0,No diabetes,logistic,0.25895230099848543,0,No diabetes
+4,120,68,NA,NA,29.6,0.709,34,0,No diabetes,logistic,0.2986018675625633,0,No diabetes
+3,111,90,12,78,28.4,0.495,29,0,No diabetes,logistic,0.12447542019179086,0,No diabetes
+6,134,70,23,130,35.4,0.542,29,1,Diabetes,logistic,0.5189333918638005,1,Diabetes
+2,87,NA,23,NA,28.9,0.773,25,0,No diabetes,logistic,0.08008677152734231,0,No diabetes
+0,129,110,46,130,67.1,0.319,26,1,Diabetes,logistic,0.7975102093401644,1,Diabetes
+5,73,60,NA,NA,26.8,0.268,27,0,No diabetes,logistic,0.046525319962417815,0,No diabetes
+8,181,68,36,495,30.1,0.615,60,1,Diabetes,logistic,0.8507177028415406,1,Diabetes
+7,159,66,NA,NA,30.4,0.383,36,1,Diabetes,logistic,0.6637487774002707,1,Diabetes
+3,107,62,13,48,22.9,0.678,23,1,Diabetes,logistic,0.10882870128806735,0,No diabetes
+4,148,60,27,318,30.9,0.15,29,1,Diabetes,logistic,0.40699422256338147,0,No diabetes
+1,138,82,NA,NA,40.1,0.236,28,0,No diabetes,logistic,0.42970913835333285,0,No diabetes
+1,96,64,27,87,33.2,0.289,21,0,No diabetes,logistic,0.1031107089109578,0,No diabetes
+7,184,84,33,NA,35.5,0.355,41,1,Diabetes,logistic,0.8615941516131363,1,Diabetes
+0,140,65,26,130,42.6,0.431,24,1,Diabetes,logistic,0.5525711327886155,1,Diabetes
+9,112,82,32,175,34.2,0.26,36,1,Diabetes,logistic,0.31076006169560244,0,No diabetes
+7,142,60,33,190,28.8,0.687,61,0,No diabetes,logistic,0.6438031891681651,1,Diabetes
+7,181,84,21,192,35.9,0.586,51,1,Diabetes,logistic,0.8796101006210565,1,Diabetes
+0,104,76,NA,NA,18.4,0.582,27,0,No diabetes,logistic,0.04248975515679098,0,No diabetes
+1,91,64,24,NA,29.2,0.192,21,0,No diabetes,logistic,0.05661869951601399,0,No diabetes
+9,184,85,15,NA,30,1.213,49,1,Diabetes,logistic,0.9096256629900196,1,Diabetes
+3,111,56,39,NA,30.1,0.557,30,0,No diabetes,logistic,0.22746960719760384,0,No diabetes
+11,155,76,28,150,33.3,1.353,51,1,Diabetes,logistic,0.8879341950811375,1,Diabetes
+2,108,62,10,278,25.3,0.881,22,0,No diabetes,logistic,0.11675124585027612,0,No diabetes
+7,133,88,15,155,32.4,0.262,37,0,No diabetes,logistic,0.3709585709950236,0,No diabetes
+7,161,86,NA,NA,30.4,0.165,47,1,Diabetes,logistic,0.6138502499497968,1,Diabetes
+1,119,86,39,220,45.6,0.808,29,1,Diabetes,logistic,0.478852691412576,0,No diabetes
+4,96,56,17,49,20.8,0.34,26,0,No diabetes,logistic,0.06195420606050963,0,No diabetes
+1,128,48,45,194,40.5,0.613,24,1,Diabetes,logistic,0.525405176208915,1,Diabetes
+5,77,82,41,42,35.8,0.156,35,0,No diabetes,logistic,0.09544891049435927,0,No diabetes
+10,161,68,23,132,25.5,0.326,47,1,Diabetes,logistic,0.6643089838392364,1,Diabetes
+0,137,68,14,148,24.8,0.143,21,0,No diabetes,logistic,0.13825883580105916,0,No diabetes
+6,80,66,30,NA,26.2,0.313,41,0,No diabetes,logistic,0.07172157796012046,0,No diabetes
+2,155,74,17,96,26.6,0.433,27,1,Diabetes,logistic,0.3720324528967282,0,No diabetes
+7,109,80,31,NA,35.9,1.127,43,1,Diabetes,logistic,0.48498264736001295,0,No diabetes
+2,112,75,32,NA,35.7,0.148,21,0,No diabetes,logistic,0.1742143989132209,0,No diabetes
+2,102,86,36,120,45.5,0.127,23,1,Diabetes,logistic,0.23643323298991153,0,No diabetes
+2,87,58,16,52,32.7,0.166,25,0,No diabetes,logistic,0.08322618028338905,0,No diabetes
+7,178,84,NA,NA,39.9,0.331,41,1,Diabetes,logistic,0.8773223038760172,1,Diabetes
+1,NA,68,35,NA,32,0.389,22,0,No diabetes,logistic,0.18509766894032006,0,No diabetes
+9,165,88,NA,NA,30.4,0.302,49,1,Diabetes,logistic,0.7164764303926385,1,Diabetes
+13,129,NA,30,NA,39.9,0.569,44,1,Diabetes,logistic,0.7780366018754432,1,Diabetes
+1,196,76,36,249,36.5,0.875,29,1,Diabetes,logistic,0.8799549105740612,1,Diabetes
+3,173,82,48,465,38.4,2.137,25,1,Diabetes,logistic,0.9110047528742671,1,Diabetes
+4,156,75,NA,NA,48.3,0.238,32,1,Diabetes,logistic,0.8210919954107538,1,Diabetes
+1,125,70,24,110,24.3,0.221,25,0,No diabetes,logistic,0.11673079456811732,0,No diabetes
+1,131,64,14,415,23.7,0.389,21,0,No diabetes,logistic,0.1176212317236769,0,No diabetes
+3,96,56,34,115,24.7,0.944,39,0,No diabetes,logistic,0.14469869215342757,0,No diabetes
+0,102,64,46,78,40.6,0.496,21,0,No diabetes,logistic,0.2396874299652808,0,No diabetes
+1,181,64,30,180,34.1,0.328,38,1,Diabetes,logistic,0.754477029760603,1,Diabetes
+0,135,94,46,145,40.6,0.284,26,0,No diabetes,logistic,0.36546963846699393,0,No diabetes
+3,89,74,16,85,30.4,0.551,38,0,No diabetes,logistic,0.10391886614670226,0,No diabetes
+1,80,74,11,60,30,0.527,22,0,No diabetes,logistic,0.04919389830136991,0,No diabetes
+5,147,75,NA,NA,29.9,0.434,28,0,No diabetes,logistic,0.4541682652444697,0,No diabetes
+2,83,66,23,50,32.2,0.497,22,0,No diabetes,logistic,0.0812188082755758,0,No diabetes
+0,180,78,63,14,59.4,2.42,25,1,Diabetes,logistic,0.9921954171304718,1,Diabetes
+2,134,70,NA,NA,28.9,0.542,23,1,Diabetes,logistic,0.2784226570368796,0,No diabetes
+0,91,68,32,210,39.9,0.381,25,0,No diabetes,logistic,0.13378895857394646,0,No diabetes
+0,124,56,13,105,21.8,0.452,21,0,No diabetes,logistic,0.10944992982974043,0,No diabetes
+7,136,90,NA,NA,29.9,0.21,50,0,No diabetes,logistic,0.3933347765176374,0,No diabetes
+8,126,74,38,75,25.9,0.162,39,0,No diabetes,logistic,0.2797297170988959,0,No diabetes
+3,158,70,30,328,35.5,0.344,35,1,Diabetes,logistic,0.5974665443070775,1,Diabetes
+4,85,58,22,49,27.8,0.306,28,0,No diabetes,logistic,0.0756075688890982,0,No diabetes
+0,135,68,42,250,42.3,0.365,24,1,Diabetes,logistic,0.4671222225865747,0,No diabetes
+0,173,78,32,265,46.5,1.159,58,0,No diabetes,logistic,0.9276813100256526,1,Diabetes
+4,99,72,17,NA,25.6,0.294,28,0,No diabetes,logistic,0.07711512994987532,0,No diabetes
+5,110,68,NA,NA,26,0.292,30,0,No diabetes,logistic,0.13872213348648255,0,No diabetes
+3,84,72,32,NA,37.2,0.267,28,0,No diabetes,logistic,0.11206501593710519,0,No diabetes
+3,99,54,19,86,25.6,0.154,24,0,No diabetes,logistic,0.0771883405862722,0,No diabetes
+9,145,88,34,165,30.3,0.771,53,1,Diabetes,logistic,0.6555187998405196,1,Diabetes
+9,130,70,NA,NA,34.2,0.652,45,1,Diabetes,logistic,0.621483428155216,1,Diabetes
+1,97,64,19,82,18.2,0.299,21,0,No diabetes,logistic,0.030780818696148654,0,No diabetes
+2,122,60,18,106,29.8,0.717,22,0,No diabetes,logistic,0.25651072281404264,0,No diabetes
+1,86,66,52,65,41.3,0.917,29,0,No diabetes,logistic,0.25410384459203905,0,No diabetes
+4,132,NA,NA,NA,32.9,0.302,23,1,Diabetes,logistic,0.33207710547890795,0,No diabetes
+4,84,90,23,56,39.5,0.159,25,0,No diabetes,logistic,0.10770804796579486,0,No diabetes
+1,88,78,29,76,32,0.365,29,0,No diabetes,logistic,0.07334076398061777,0,No diabetes
+1,116,70,28,NA,27.4,0.204,21,0,No diabetes,logistic,0.10517914040841667,0,No diabetes
+6,114,88,NA,NA,27.8,0.247,66,0,No diabetes,logistic,0.2307983416479595,0,No diabetes
+1,97,70,40,NA,38.1,0.218,30,0,No diabetes,logistic,0.15553234625078935,0,No diabetes
+6,92,62,32,126,32,0.085,46,0,No diabetes,logistic,0.1553093404994425,0,No diabetes
+4,154,72,29,126,31.3,0.338,37,0,No diabetes,logistic,0.54149190911085,1,Diabetes
+10,133,68,NA,NA,27,0.245,36,0,No diabetes,logistic,0.40896299560680716,0,No diabetes
+0,151,90,46,NA,42.1,0.371,21,1,Diabetes,logistic,0.553688603008008,1,Diabetes
+12,121,78,17,NA,26.5,0.259,62,0,No diabetes,logistic,0.39578561283368835,0,No diabetes
+2,82,52,22,115,28.5,1.699,25,0,No diabetes,logistic,0.16708055489232332,0,No diabetes
+6,123,72,45,230,33.6,0.733,34,0,No diabetes,logistic,0.4339778078999275,0,No diabetes
+0,67,76,NA,NA,45.3,0.194,46,0,No diabetes,logistic,0.10597467034742938,0,No diabetes
+1,89,24,19,25,27.8,0.559,21,0,No diabetes,logistic,0.10910977614633478,0,No diabetes
+1,108,88,19,NA,27.1,0.4,24,0,No diabetes,logistic,0.07489626996016913,0,No diabetes
+7,150,78,29,126,35.2,0.692,54,1,Diabetes,logistic,0.7570741736576884,1,Diabetes
+7,168,88,42,321,38.2,0.787,40,1,Diabetes,logistic,0.8391695703348656,1,Diabetes
+9,112,82,24,NA,28.2,1.282,50,1,Diabetes,logistic,0.4402003347009688,0,No diabetes
+0,94,70,27,115,43.5,0.347,21,0,No diabetes,logistic,0.18292528100730693,0,No diabetes
+2,108,64,NA,NA,30.8,0.158,21,0,No diabetes,logistic,0.12162688962647847,0,No diabetes
+0,125,68,NA,NA,24.7,0.206,21,0,No diabetes,logistic,0.10674912583896476,0,No diabetes
+0,102,78,40,90,34.5,0.238,24,0,No diabetes,logistic,0.11138867203419754,0,No diabetes
+1,128,82,17,183,27.5,0.115,22,0,No diabetes,logistic,0.11670365192998076,0,No diabetes
+13,104,72,NA,NA,31.2,0.465,38,1,Diabetes,logistic,0.36389123348540237,0,No diabetes
+5,104,74,NA,NA,28.8,0.153,48,0,No diabetes,logistic,0.15081031153497174,0,No diabetes
+2,94,76,18,66,31.6,0.649,23,0,No diabetes,logistic,0.10778007494841561,0,No diabetes
+2,157,74,35,440,39.4,0.134,30,0,No diabetes,logistic,0.5530734472285943,1,Diabetes
+2,120,54,NA,NA,26.8,0.455,27,0,No diabetes,logistic,0.19273871551140556,0,No diabetes
+4,145,82,18,NA,32.5,0.235,70,1,Diabetes,logistic,0.543449430381149,1,Diabetes
+6,165,68,26,168,33.6,0.631,49,0,No diabetes,logistic,0.7994983405633431,1,Diabetes
+3,121,52,NA,NA,36,0.127,25,1,Diabetes,logistic,0.315686114429027,0,No diabetes
+2,101,58,17,265,24.2,0.614,23,0,No diabetes,logistic,0.07698547295866981,0,No diabetes
+0,162,76,36,NA,49.6,0.364,26,1,Diabetes,logistic,0.8127612009504307,1,Diabetes
+2,129,74,26,205,33.2,0.591,25,0,No diabetes,logistic,0.304392830627407,0,No diabetes
+1,140,74,26,180,24.1,0.828,23,0,No diabetes,logistic,0.2425284617572421,0,No diabetes
+2,90,60,NA,NA,23.5,0.191,25,0,No diabetes,logistic,0.042790194110683286,0,No diabetes
+2,122,76,27,200,35.9,0.483,26,0,No diabetes,logistic,0.2823097152289863,0,No diabetes
+6,125,78,31,NA,27.6,0.565,49,1,Diabetes,logistic,0.33682642136501806,0,No diabetes
+1,168,88,29,NA,35,0.905,52,1,Diabetes,logistic,0.7614731641907372,1,Diabetes
+3,158,64,13,387,31.2,0.295,24,0,No diabetes,logistic,0.4451404389145565,0,No diabetes
+3,102,74,NA,NA,29.5,0.121,32,0,No diabetes,logistic,0.09953139571569772,0,No diabetes
+5,97,76,27,NA,35.6,0.378,52,1,Diabetes,logistic,0.23591123766183456,0,No diabetes
+3,102,44,20,94,30.8,0.4,26,0,No diabetes,logistic,0.17380388076098743,0,No diabetes
+1,109,58,18,116,28.5,0.219,22,0,No diabetes,logistic,0.1053526231911548,0,No diabetes
+9,140,94,NA,NA,32.7,0.734,45,1,Diabetes,logistic,0.6154627723571006,1,Diabetes
+3,108,62,24,NA,26,0.223,25,0,No diabetes,logistic,0.10191720765994368,0,No diabetes
+0,181,88,44,510,43.3,0.222,26,1,Diabetes,logistic,0.730536648985931,1,Diabetes
+1,106,76,NA,NA,37.5,0.197,26,0,No diabetes,logistic,0.16511202887279017,0,No diabetes

@@ -1,0 +1,206 @@
+---
+title: "Kaggle Heart Disease Classification"
+subtitle: "Interpretable binary classification with validation and calibration"
+author: "Matheus Assis de Oliveira"
+date: "June 26, 2026"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+geometry: margin=0.82in
+fontsize: 10pt
+urlcolor: blue
+linkcolor: black
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.width = 7.2, fig.height = 4.6, fig.align = "center")
+
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(readr)
+library(scales)
+library(tibble)
+
+if (!file.exists("../data/processed/s14_model_metrics.csv")) {
+  source("../src/R/heart_disease_classification.R")
+  prepare_s14_outputs(force = FALSE)
+}
+
+clean_data <- read_csv("../data/processed/s14_clean_heart.csv", show_col_types = FALSE)
+metrics <- read_csv("../data/processed/s14_model_metrics.csv", show_col_types = FALSE)
+confusion <- read_csv("../data/processed/s14_confusion_matrix.csv", show_col_types = FALSE)
+cv_metrics <- read_csv("../data/processed/s14_cv_metrics.csv", show_col_types = FALSE)
+roc_points <- read_csv("../data/processed/s14_roc_curve.csv", show_col_types = FALSE)
+calibration <- read_csv("../data/processed/s14_calibration_bins.csv", show_col_types = FALSE)
+importance <- read_csv("../data/processed/s14_variable_importance.csv", show_col_types = FALSE)
+
+theme_set(theme_minimal(base_size = 10))
+fmt_int <- label_comma(big.mark = ",", decimal.mark = ".")
+fmt_num <- label_number(big.mark = ",", decimal.mark = ".", accuracy = 0.001)
+fmt_pct <- label_percent(accuracy = 0.1)
+
+selected <- metrics |> slice_head(n = 1)
+records <- nrow(clean_data)
+positive_rate <- mean(clean_data$target == 1)
+```
+
+\newpage
+
+# Abstract
+
+This article presents the final project in the current portfolio roadmap: a Kaggle heart disease classification workflow. The dataset contains `r fmt_int(records)` records and a heart disease prevalence of `r fmt_pct(positive_rate)`. The workflow compares logistic regression and decision tree models with stratified validation, ROC-AUC, confusion metrics, calibration bins, and standardized coefficient interpretation. The selected model is `r selected$model`, with holdout ROC-AUC of `r fmt_num(selected$roc_auc)`, accuracy of `r fmt_pct(selected$accuracy)`, sensitivity of `r fmt_pct(selected$sensitivity)`, and specificity of `r fmt_pct(selected$specificity)`. This is a portfolio benchmark, not a clinical decision tool.
+
+# Introduction
+
+Heart disease classification is a classic structured-data benchmark. It is useful for a portfolio because it requires the analyst to handle categorical-style numerical variables, evaluate binary classification metrics, and communicate model limits.
+
+The research question is:
+
+```text
+Which variables help classify heart disease presence,
+and how can the model remain interpretable?
+```
+
+# Data
+
+```{r data-table}
+tibble(
+  Item = c("Canonical source", "Records", "Predictors", "Outcome prevalence", "Target"),
+  Value = c(
+    "Kaggle Heart Disease Dataset",
+    fmt_int(records),
+    "13",
+    fmt_pct(positive_rate),
+    "Heart disease presence"
+  )
+) |>
+  knitr::kable(caption = "Dataset summary.")
+```
+
+```{r outcome-plot, fig.cap="Outcome distribution."}
+clean_data |>
+  count(target_label) |>
+  ggplot(aes(x = target_label, y = n, fill = target_label)) +
+  geom_col(width = 0.65, show.legend = FALSE) +
+  scale_fill_manual(values = c("No heart disease" = "#3A7CA5", "Heart disease" = "#B2182B")) +
+  labs(x = NULL, y = "Records")
+```
+
+# Methods
+
+The workflow uses a stratified 80/20 holdout split and five-fold stratified cross-validation on the training set. Logistic regression is trained on standardized predictors, while the decision tree uses the original numeric feature scale. ROC-AUC is computed manually, and confusion metrics are reported at threshold 0.50.
+
+# Results
+
+## Holdout Metrics
+
+```{r metrics-table}
+metrics |>
+  transmute(
+    Model = model,
+    Accuracy = fmt_pct(accuracy),
+    Sensitivity = fmt_pct(sensitivity),
+    Specificity = fmt_pct(specificity),
+    Precision = fmt_pct(precision),
+    F1 = fmt_pct(f1),
+    `ROC-AUC` = fmt_num(roc_auc)
+  ) |>
+  knitr::kable(caption = "Holdout model metrics at threshold 0.50.")
+```
+
+## Confusion Matrix
+
+```{r confusion-table}
+confusion |>
+  rename(Observed = target_label, Predicted = predicted_label, Records = records) |>
+  knitr::kable(caption = "Selected-model holdout confusion matrix.")
+```
+
+## ROC Curve
+
+```{r roc-plot, fig.cap="Selected-model ROC curve."}
+roc_points |>
+  ggplot(aes(x = fpr, y = sensitivity)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "grey60") +
+  geom_line(color = "#08519C", linewidth = 0.8) +
+  coord_equal() +
+  labs(x = "False positive rate", y = "Sensitivity")
+```
+
+## Cross-Validation
+
+```{r cv-table}
+cv_metrics |>
+  group_by(model) |>
+  summarise(
+    accuracy = mean(accuracy, na.rm = TRUE),
+    sensitivity = mean(sensitivity, na.rm = TRUE),
+    specificity = mean(specificity, na.rm = TRUE),
+    f1 = mean(f1, na.rm = TRUE),
+    roc_auc = mean(roc_auc, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  transmute(
+    Model = model,
+    Accuracy = fmt_pct(accuracy),
+    Sensitivity = fmt_pct(sensitivity),
+    Specificity = fmt_pct(specificity),
+    F1 = fmt_pct(f1),
+    `Mean ROC-AUC` = fmt_num(roc_auc)
+  ) |>
+  knitr::kable(caption = "Five-fold cross-validation summary.")
+```
+
+## Variable Interpretation
+
+```{r importance-plot, fig.cap="Logistic regression variable importance."}
+importance |>
+  ggplot(aes(x = reorder(variable, importance), y = importance)) +
+  geom_col(fill = "#4C956C", width = 0.70) +
+  coord_flip() +
+  labs(x = NULL, y = "Absolute standardized coefficient")
+```
+
+```{r importance-table}
+importance |>
+  transmute(Variable = variable, Coefficient = fmt_num(coefficient), Direction = direction) |>
+  knitr::kable(caption = "Standardized logistic regression coefficients.")
+```
+
+## Calibration
+
+```{r calibration-plot, fig.cap="Calibration bins for the selected model."}
+calibration |>
+  ggplot(aes(x = mean_probability, y = observed_rate)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "grey60") +
+  geom_point(size = 2.4, color = "#B2182B") +
+  geom_line(color = "#B2182B") +
+  coord_equal(xlim = c(0, 1), ylim = c(0, 1)) +
+  labs(x = "Mean predicted probability", y = "Observed heart disease rate")
+```
+
+# Discussion
+
+The selected model provides an interpretable classification benchmark. Logistic regression coefficients show which standardized predictors are associated with higher or lower predicted probability, while the decision tree provides a simple nonlinear comparison.
+
+The model should be read as a teaching and portfolio artifact. In clinical settings, threshold choice would depend on screening goals, harm tradeoffs, prevalence, and external validation.
+
+# Limitations
+
+The dataset is small, benchmark-oriented, and not sufficient for medical deployment. It lacks longitudinal clinical history, medications, symptoms, diagnostic imaging, care pathways, and representative sampling. The output is not medical advice, diagnosis, triage, or a clinical recommendation.
+
+# Conclusion
+
+S14 completes the current portfolio roadmap with a validated, interpretable heart disease classification project. The workflow includes model comparison, ROC-AUC, confusion metrics, calibration, variable interpretation, and careful clinical limitations.
+
+# References
+
+Kaggle Heart Disease Dataset. <https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset>
+
+UCI Heart Disease Dataset. <https://archive.ics.uci.edu/dataset/45/heart+disease>
+
+Public CSV mirror used for local reproducibility. <https://raw.githubusercontent.com/kb22/Heart-Disease-Prediction/master/dataset.csv>
+
