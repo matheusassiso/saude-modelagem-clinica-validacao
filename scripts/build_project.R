@@ -9,6 +9,7 @@ suppressPackageStartupMessages({
 dir.create("data/processed", recursive = TRUE, showWarnings = FALSE)
 dir.create("figures", recursive = TRUE, showWarnings = FALSE)
 dir.create("docs", recursive = TRUE, showWarnings = FALSE)
+dir.create("docs/figures", recursive = TRUE, showWarnings = FALSE)
 invisible(file.create("docs/.nojekyll"))
 
 theme_set(theme_minimal(base_size = 11))
@@ -199,12 +200,12 @@ footer{padding:20px 5vw;color:#52606d}
 </header>
 <section class="grid">%s</section>
 <section class="figures">
-<figure><img src="../figures/01_metricas_holdout.png" alt="Métricas holdout"><figcaption>Métricas de validação</figcaption></figure>
-<figure><img src="../figures/02_curvas_roc.png" alt="Curvas ROC"><figcaption>Curvas ROC</figcaption></figure>
-<figure><img src="../figures/03_calibracao.png" alt="Calibração"><figcaption>Calibração</figcaption></figure>
-<figure><img src="../figures/04_importancia_variaveis.png" alt="Importância de variáveis"><figcaption>Importância de variáveis</figcaption></figure>
-<figure><img src="../figures/05_distribuicao_desfechos.png" alt="Distribuição dos desfechos"><figcaption>Distribuição dos desfechos</figcaption></figure>
-<figure><img src="../figures/06_matriz_confusao.png" alt="Matriz de confusão"><figcaption>Matriz de confusão</figcaption></figure>
+<figure><img src="figures/01_metricas_holdout.png" alt="Métricas holdout"><figcaption>Métricas de validação</figcaption></figure>
+<figure><img src="figures/02_curvas_roc.png" alt="Curvas ROC"><figcaption>Curvas ROC</figcaption></figure>
+<figure><img src="figures/03_calibracao.png" alt="Calibração"><figcaption>Calibração</figcaption></figure>
+<figure><img src="figures/04_importancia_variaveis.png" alt="Importância de variáveis"><figcaption>Importância de variáveis</figcaption></figure>
+<figure><img src="figures/05_distribuicao_desfechos.png" alt="Distribuição dos desfechos"><figcaption>Distribuição dos desfechos</figcaption></figure>
+<figure><img src="figures/06_matriz_confusao.png" alt="Matriz de confusão"><figcaption>Matriz de confusão</figcaption></figure>
 </section>
 <footer>Artefato gerado por scripts/build_project.R</footer>
 </body>
@@ -212,6 +213,7 @@ footer{padding:20px 5vw;color:#52606d}
 
 writeLines(dashboard, "docs/modelagem_clinica_dashboard.html", useBytes = TRUE)
 invisible(file.copy("docs/modelagem_clinica_dashboard.html", "docs/index.html", overwrite = TRUE))
+invisible(file.copy(list.files("figures", full.names = TRUE), "docs/figures", overwrite = TRUE))
 
 render("modelagem_clinica_validacao.Rmd", output_format = "html_document", output_file = "relatorio.html", output_dir = "docs", quiet = TRUE)
 render("modelagem_clinica_validacao.Rmd", output_format = "pdf_document", output_file = "modelagem_clinica_validacao.pdf", quiet = TRUE)
