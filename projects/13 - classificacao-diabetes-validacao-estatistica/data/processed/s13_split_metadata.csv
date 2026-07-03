@@ -1,5 +1,0 @@
-split_set,outcome_label,records
-test,No diabetes,100
-test,Diabetes,54
-train,No diabetes,400
-train,Diabetes,214

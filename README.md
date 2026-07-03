@@ -1,40 +1,167 @@
-# Modelagem Clinica e Validacao Estatistica
+# Modelagem Clínica e Validação Estatística
 
-## Motivacao
+**Classificação supervisionada aplicada a diabetes e doença cardíaca, com foco em validação, calibração e interpretabilidade**
 
-Modelos clinicos so sao uteis como portfolio quando mostram validacao, interpretabilidade e limites de uso, nao apenas acuracia.
+![R](https://img.shields.io/badge/R-276DC3?style=flat&logo=r&logoColor=white)
+![RStudio](https://img.shields.io/badge/RStudio-75AADB?style=flat&logo=rstudio&logoColor=white)
+![RMarkdown](https://img.shields.io/badge/Relatório-RMarkdown-orange?style=flat)
+![Modelagem](https://img.shields.io/badge/Modelagem-Classificação%20clínica-green?style=flat)
+![Status](https://img.shields.io/badge/status-concluído-success?style=flat)
 
-## Objetivo da pesquisa
+---
 
-Demonstrar pipelines de classificacao supervisionada para diabetes e doenca cardiaca com metricas, calibracao e importancia de variaveis.
+## Dashboard interativo
 
-## Resultados
+**[Abrir dashboard online](https://matheusassiso.github.io/saude-modelagem-clinica-validacao/)**
 
-O repositorio apresenta modelos validados com curva ROC, matriz de confusao, calibracao, importancia de variaveis, previsoes holdout e relatorios tecnicos.
+Dashboard executivo com métricas de validação, curva ROC, calibração, importância de variáveis, distribuição dos desfechos e matriz de confusão.
 
-## Dashboard executivo
+![Métricas holdout](figures/01_metricas_holdout.png)
 
-Abra a apresentacao em [docs/index.html](docs/index.html). Ela resume a pesquisa, lista os entregaveis e aponta para os dashboards originais de cada estudo.
+---
 
-## Projetos incluidos
+## Objetivo
 
-| Estudo | Dashboard | Relatorios | Mapa |
-|---|---|---|---|
-| 13 - classificacao-diabetes-validacao-estatistica | [Dashboard](projects/13 - classificacao-diabetes-validacao-estatistica/docs/index.html) | [13-kaggle-diabetes-classification.html](projects/13 - classificacao-diabetes-validacao-estatistica/reports/13-kaggle-diabetes-classification.html)<br>[13-kaggle-diabetes-classification.pdf](projects/13 - classificacao-diabetes-validacao-estatistica/reports/13-kaggle-diabetes-classification.pdf) | Nao |
-| 14 - classificacao-doenca-cardiaca-aprendizado-maquina | [Dashboard](projects/14 - classificacao-doenca-cardiaca-aprendizado-maquina/docs/index.html) | [14-kaggle-heart-disease-classification.html](projects/14 - classificacao-doenca-cardiaca-aprendizado-maquina/reports/14-kaggle-heart-disease-classification.html)<br>[14-kaggle-heart-disease-classification.pdf](projects/14 - classificacao-doenca-cardiaca-aprendizado-maquina/reports/14-kaggle-heart-disease-classification.pdf) | Nao |
+Integrar dois estudos de modelagem clínica em um único projeto profissional:
+
+1. classificação de diabetes;
+2. classificação de doença cardíaca;
+3. validação holdout e validação cruzada;
+4. calibração e interpretabilidade.
+
+A pergunta central é:
+
+> Como apresentar modelos clínicos de classificação de forma profissional, mostrando desempenho, calibração, interpretação e limites de uso?
+
+---
+
+## Motivação
+
+Modelos clínicos não devem ser avaliados apenas por acurácia. Uma apresentação profissional precisa mostrar discriminação, sensibilidade, especificidade, calibração, matriz de confusão e variáveis relevantes. Esse projeto organiza esses elementos para comunicar maturidade analítica em modelagem preditiva.
+
+---
+
+## Dados
+
+| Dimensão | Conteúdo | Indicadores usados |
+|---|---|---|
+| Diabetes | base clínica tabular limpa | glicose, IMC, idade, histórico familiar e desfecho |
+| Doença cardíaca | base clínica tabular limpa | idade, colesterol, pressão, dor torácica, frequência máxima e desfecho |
+| Validação | métricas finais e validação cruzada | acurácia, sensibilidade, especificidade, precisão, F1 e AUC |
+| Calibração | probabilidades por faixas | probabilidade média e taxa observada |
+| Interpretabilidade | coeficientes e importância | direção e importância absoluta das variáveis |
+
+---
+
+## Método
+
+```text
+Bases limpas → modelos supervisionados → holdout e validação cruzada
+→ ROC → calibração → interpretabilidade → dashboard e relatório
+```
+
+Etapas principais:
+
+1. organização dos resultados finais em `data/source/`;
+2. consolidação das métricas em `data/processed/`;
+3. comparação dos modelos por projeto;
+4. geração de figuras de validação;
+5. publicação em RMarkdown, PDF, HTML e dashboard.
+
+---
+
+## Resultados principais
+
+| Projeto | Melhor modelo | AUC | Acurácia | Sensibilidade | Especificidade |
+|---|---|---:|---:|---:|---:|
+| Diabetes | Logístico | 91,6% | 83,8% | 64,8% | 94,0% |
+| Doença cardíaca | Logístico | 86,3% | 80,3% | 87,9% | 71,4% |
+
+---
+
+## Evidências visuais
+
+### Métricas holdout
+
+![Métricas holdout](figures/01_metricas_holdout.png)
+
+### Curvas ROC
+
+![Curvas ROC](figures/02_curvas_roc.png)
+
+### Calibração
+
+![Calibração](figures/03_calibracao.png)
+
+### Importância de variáveis
+
+![Importância](figures/04_importancia_variaveis.png)
+
+### Distribuição dos desfechos
+
+![Desfechos](figures/05_distribuicao_desfechos.png)
+
+### Matriz de confusão
+
+![Matriz de confusão](figures/06_matriz_confusao.png)
+
+---
+
+## Entregáveis
+
+- [Dashboard interativo online](https://matheusassiso.github.io/saude-modelagem-clinica-validacao/)
+- [Arquivo HTML do dashboard](docs/modelagem_clinica_dashboard.html)
+- [Relatório PDF](modelagem_clinica_validacao.pdf)
+- [Relatório RMarkdown](modelagem_clinica_validacao.Rmd)
+- [Relatório HTML](docs/relatorio.html)
+- [Métricas consolidadas](data/processed/metricas_modelos.csv)
+- [Curvas ROC](data/processed/curvas_roc.csv)
+- [Calibração](data/processed/calibracao_modelos.csv)
+
+---
 
 ## Estrutura
 
-- `docs/index.html`: apresentacao executiva do repositorio.
-- `projects/`: estudos originais preservados para auditoria.
-- `projects/*/src/R`: scripts analiticos.
-- `projects/*/reports`: relatorios tecnicos e figuras.
-- `projects/*/data/processed`: bases finais usadas nos dashboards.
+```text
+.
+├── data/
+│   ├── source/
+│   └── processed/
+├── docs/
+│   ├── index.html
+│   ├── modelagem_clinica_dashboard.html
+│   └── relatorio.html
+├── figures/
+├── scripts/
+│   └── build_project.R
+├── modelagem_clinica_validacao.Rmd
+├── modelagem_clinica_validacao.pdf
+├── saude-modelagem-clinica-validacao.Rproj
+└── COMMIT_INSTRUCTIONS.txt
+```
 
-## Reprodutibilidade
+---
 
-Os dados brutos pesados, caches publicos e bases processadas record-level acima de 50 MB nao entram no Git para manter o repositorio publicavel. Quando necessario, consulte `data/raw/README.md`, scripts em `src/R` e instrucoes de download dentro de cada estudo.
+## Como reproduzir
 
-## Limites
+Abra `saude-modelagem-clinica-validacao.Rproj` no RStudio e execute:
 
-As analises sao exploratorias e tecnicas. Mapas, rankings e modelos apoiam triagem e hipotese; nao substituem validacao institucional, auditoria documental ou decisao clinica.
+```r
+source("scripts/build_project.R")
+```
+
+O script reconstrói dados consolidados, figuras, dashboard, relatório HTML e PDF.
+
+---
+
+## Limitações
+
+Os modelos são demonstrativos e não devem ser usados para decisão clínica real sem validação externa, auditoria de viés, calibração na população-alvo e governança institucional.
+
+---
+
+## Contato
+
+**Matheus Assis de Oliveira**
+
+[![GitHub](https://img.shields.io/badge/GitHub-matheusassiso-181717?style=flat&logo=github&logoColor=white)](https://github.com/matheusassiso)

@@ -1,0 +1,22 @@
+variable,coefficient,importance,direction,projeto
+Glucose,1.0806236317128393,1.0806236317128393,Higher probability,Diabetes
+BMI,0.5833832225968802,0.5833832225968802,Higher probability,Diabetes
+Pregnancies,0.34674263845815956,0.34674263845815956,Higher probability,Diabetes
+DiabetesPedigreeFunction,0.2722934118348088,0.2722934118348088,Higher probability,Diabetes
+Age,0.171859057788946,0.171859057788946,Higher probability,Diabetes
+BloodPressure,-0.15701479240177016,0.15701479240177016,Lower probability,Diabetes
+Insulin,-0.07790690188353093,0.07790690188353093,Lower probability,Diabetes
+SkinThickness,0.0339458628062691,0.0339458628062691,Higher probability,Diabetes
+sex,-1.084750200544457,1.084750200544457,Lower probability,Doença cardíaca
+cp,1.007263168645102,1.007263168645102,Higher probability,Doença cardíaca
+ca,-0.9126266493209176,0.9126266493209176,Lower probability,Doença cardíaca
+thalach,0.719049038333312,0.719049038333312,Higher probability,Doença cardíaca
+oldpeak,-0.5500120494671968,0.5500120494671968,Lower probability,Doença cardíaca
+chol,-0.5315698531685351,0.5315698531685351,Lower probability,Doença cardíaca
+thal,-0.527403835853577,0.527403835853577,Lower probability,Doença cardíaca
+trestbps,-0.5236765551460881,0.5236765551460881,Lower probability,Doença cardíaca
+exang,-0.3366584181405007,0.3366584181405007,Lower probability,Doença cardíaca
+slope,0.31182507828516653,0.31182507828516653,Higher probability,Doença cardíaca
+fbs,-0.04604334073274426,0.04604334073274426,Lower probability,Doença cardíaca
+age,-0.04230755762171389,0.04230755762171389,Lower probability,Doença cardíaca
+restecg,0.04148677712784317,0.04148677712784317,Higher probability,Doença cardíaca

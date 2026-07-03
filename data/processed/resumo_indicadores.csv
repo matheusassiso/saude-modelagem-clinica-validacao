@@ -1,0 +1,10 @@
+indicador,valor
+Projetos integrados,2
+Registros na base de diabetes,768
+Registros na base cardíaca,303
+Melhor AUC - diabetes,0.9157407407407409
+Melhor AUC - doença cardíaca,0.8625541125541125
+Acurácia holdout - diabetes,0.8376623376623377
+Acurácia holdout - doença cardíaca,0.8032786885245902
+Sensibilidade - diabetes,0.6481481481481481
+Sensibilidade - doença cardíaca,0.8787878787878788

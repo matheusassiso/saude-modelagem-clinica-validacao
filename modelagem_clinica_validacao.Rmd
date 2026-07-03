@@ -1,0 +1,114 @@
+---
+title: "Modelagem Clínica e Validação Estatística"
+author: "Matheus Assis de Oliveira"
+date: "2026-07-03"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(dplyr)
+library(knitr)
+library(readr)
+library(scales)
+
+metricas <- read_csv("data/processed/metricas_modelos.csv", show_col_types = FALSE)
+resumo <- read_csv("data/processed/resumo_indicadores.csv", show_col_types = FALSE)
+br_pct <- label_percent(decimal.mark = ",", accuracy = 0.1)
+br_num <- label_number(big.mark = ".", decimal.mark = ",")
+```
+
+# Introdução
+
+Este projeto consolida dois estudos de modelagem clínica supervisionada: classificação de diabetes e classificação de doença cardíaca. A ênfase não está apenas em acurácia, mas em validação, discriminação, calibração, interpretabilidade e limites de uso.
+
+# Motivação
+
+Modelos clínicos podem parecer bons quando apresentados só por uma métrica. Para análise profissional, é necessário mostrar desempenho em holdout, validação cruzada, matriz de confusão, curva ROC, calibração e importância das variáveis. Esse conjunto permite avaliar se o modelo é útil como triagem analítica e quais riscos existem antes de qualquer aplicação prática.
+
+# Dados e método
+
+Foram integradas duas bases clínicas tabulares já tratadas. Em cada estudo foram comparados modelos logísticos e árvores de decisão, com validação holdout e métricas de classificação.
+
+O pipeline foi:
+
+1. organização das bases limpas e métricas finais;
+2. consolidação de resultados de diabetes e doença cardíaca;
+3. comparação de métricas de validação;
+4. análise de curva ROC;
+5. avaliação de calibração;
+6. leitura de importância das variáveis;
+7. publicação em dashboard, relatório HTML e PDF.
+
+# Resultados descritivos
+
+```{r resumo}
+resumo |>
+  mutate(valor = if_else(indicador %in% c("Projetos integrados", "Registros na base de diabetes", "Registros na base cardíaca"), br_num(valor), br_pct(valor))) |>
+  kable(col.names = c("Indicador", "Resultado"))
+```
+
+# Métricas de validação
+
+```{r metricas}
+metricas |>
+  select(projeto, modelo, accuracy, sensitivity, specificity, precision, f1, roc_auc, tp, fp, tn, fn) |>
+  mutate(across(accuracy:roc_auc, br_pct)) |>
+  kable(col.names = c("Projeto", "Modelo", "Acurácia", "Sensibilidade", "Especificidade", "Precisão", "F1", "AUC", "VP", "FP", "VN", "FN"))
+```
+
+```{r fig-metricas, out.width="100%"}
+knitr::include_graphics("figures/01_metricas_holdout.png")
+```
+
+# Discriminação
+
+```{r fig-roc, out.width="100%"}
+knitr::include_graphics("figures/02_curvas_roc.png")
+```
+
+A curva ROC mostra a capacidade de discriminar positivos e negativos ao variar o limiar de decisão. O modelo de diabetes apresenta AUC mais alta que o modelo cardíaco, mas ambos exigem leitura conjunta com sensibilidade e especificidade.
+
+# Calibração
+
+```{r fig-cal, out.width="100%"}
+knitr::include_graphics("figures/03_calibracao.png")
+```
+
+Calibração compara probabilidade prevista e frequência observada. Esse ponto é essencial em modelos clínicos porque probabilidades mal calibradas podem induzir priorização inadequada mesmo quando a AUC é razoável.
+
+# Interpretabilidade
+
+```{r fig-imp, out.width="100%"}
+knitr::include_graphics("figures/04_importancia_variaveis.png")
+```
+
+As variáveis mais relevantes ajudam a explicar o comportamento dos modelos e a identificar sinais consistentes com conhecimento clínico. Essa leitura não transforma coeficiente em causalidade.
+
+# Desfechos e matriz de confusão
+
+```{r fig-outcome, out.width="100%"}
+knitr::include_graphics("figures/05_distribuicao_desfechos.png")
+```
+
+```{r fig-cm, out.width="100%"}
+knitr::include_graphics("figures/06_matriz_confusao.png")
+```
+
+# Dashboard
+
+O dashboard executivo está em `docs/modelagem_clinica_dashboard.html`. Ele resume métricas, ROC, calibração, importância de variáveis, distribuição dos desfechos e matriz de confusão.
+
+# Limitações
+
+As bases são tabulares e de demonstração. Os modelos não devem ser usados para decisão clínica real sem validação externa, auditoria de viés, avaliação de calibração em população-alvo, governança de dados e aprovação institucional. O projeto é uma peça de portfólio profissional de análise e validação, não um dispositivo médico.
+
+# Conclusão
+
+O projeto demonstra um fluxo completo e comunicável de modelagem clínica: preparação dos dados, comparação de modelos, validação, calibração, interpretação e publicação dos resultados. O valor está em mostrar maturidade analítica, não apenas treinar um classificador.

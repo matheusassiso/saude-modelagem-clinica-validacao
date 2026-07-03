@@ -1,2 +1,0 @@
-file,canonical_source,local_build_source,access_note,retrieved_at
-heart.csv,https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset,https://raw.githubusercontent.com/kb22/Heart-Disease-Prediction/master/dataset.csv,Kaggle is the canonical source; a public CSV mirror is used when Kaggle CLI is unavailable.,2026-06-26 23:55:44.138226

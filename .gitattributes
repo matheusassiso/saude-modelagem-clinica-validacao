@@ -1,0 +1,9 @@
+*.R linguist-language=R
+*.Rmd linguist-language=RMarkdown
+scripts/*.R linguist-language=R
+docs/** linguist-generated=true
+data/*.csv linguist-generated=true
+data/source/** linguist-generated=true
+data/processed/** linguist-generated=true
+figures/** linguist-generated=true
+*.pdf linguist-generated=true
